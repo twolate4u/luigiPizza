@@ -52,4 +52,12 @@ public class Order {
     public void addPizza(Pizza pizza) {
         orderList.add(pizza);
     }
+
+    public void deletePizza(int pizza) {
+        orderList.remove(pizza);
+    }
+
+    public void clearOrder() {
+        orderList.clear();
+    }
 }
