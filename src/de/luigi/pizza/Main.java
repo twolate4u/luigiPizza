@@ -7,6 +7,10 @@ import static java.awt.SystemColor.menu;
 public class Main {
 
     public static void main(String[] args) {
+        Auswahl auswahl = new Auswahl();
+
+        System.out.println("zwiebeln = " + auswahl.zwiebeln);
+
         welcomeMenu();
     }
 
@@ -25,6 +29,8 @@ public class Main {
             System.out.println("Der Name ist zu lang. Bitte versuchen Sie es mit einem kürzeren Namen: ");
             orderName = in.next().trim();
         }
+
+        System.out.println("Bitte wähle aus"); //Was soll bestellt werden?
 
         Order order = new Order(orderName);
         orderMenu(orderName, order);
