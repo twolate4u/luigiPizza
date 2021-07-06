@@ -8,11 +8,6 @@ public class Order {
     private String orderName;
     private List<Pizza> orderList = new ArrayList<Pizza>();
 
-    public Order(String orderName, Pizza firstPizza) {
-        this.orderName = orderName;
-        this.addPizza(firstPizza);
-    }
-
     public Order(String orderName) {
         this.orderName = orderName;
     }
@@ -51,10 +46,6 @@ public class Order {
 
     public void addPizza(Pizza pizza) {
         orderList.add(pizza);
-    }
-
-    public void deletePizza(int pizza) {
-        orderList.remove(pizza);
     }
 
     public void clearOrder() {

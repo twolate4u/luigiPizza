@@ -19,17 +19,22 @@ public class Main {
         System.out.println("Bitte geben Sie ihren Namen ein um eine neue Bestellung zu erstellen.");
         System.out.println("**********Luigis-Pizza**********");
 
-        String orderName = in.next().trim(); //hier müsste wahrscheinlich noch die Eingabe etwas überprüft werden.
+        String orderName;
+        orderName = in.next().trim();
+        while (orderName.length() > 31) {
+            System.out.println("Der Name ist zu lang. Bitte versuchen Sie es mit einem kürzeren Namen: ");
+            orderName = in.next().trim();
+        }
+
         Order order = new Order(orderName);
-        orderMenu(orderName);
+        orderMenu(orderName, order);
     }
 
-    private static void orderMenu(String orderName) {
+    private static void orderMenu(String orderName, Order order) {
         /*hier müsste eine Pizza erstellt werden und dann die Zutatenauswahl angezeigt werden*/
-        System.out.println("**********" + orderName + "**********");
-        System.out.println("**********Luigis-Pizza**********");
-        System.out.println("**********Luigis-Pizza**********");
-        System.out.println("**********Luigis-Pizza**********");
-        System.out.println("**********Luigis-Pizza**********");
+        System.out.println();
+        System.out.println("Bestellung: " + orderName);
+        System.out.println();
+        System.out.println("Pizza: " + order.getOrderList().);
     }
 }
