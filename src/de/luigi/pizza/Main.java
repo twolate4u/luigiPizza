@@ -36,5 +36,28 @@ public class Main {
         System.out.println("Bestellung: " + orderName);
         System.out.println();
         System.out.println("Pizza: " + order.getOrderList().);
+
     }
+
 }
+
+   /* int befehl = befehlParsen("Bitte geben Sie eine Ganzzahl ein: ");
+        System.out.println("befehl = " + befehl);
+
+                }
+
+private static int befehlParsen(String eingabeText) {
+        Scanner scanner = new Scanner(System.in);
+        int befehlscode = -1;
+
+        do {
+        System.out.print(eingabeText);
+        String befehl = scanner.nextLine();
+        try {
+        befehlscode = Integer.parseInt(befehl);
+        } catch (NumberFormatException e) {
+        System.out.println("Falsche Eingabe.");
+        // print commands
+        }
+        } while (befehlscode == -1);
+        return befehlscode;*/
