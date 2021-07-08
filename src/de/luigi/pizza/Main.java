@@ -61,13 +61,11 @@ public class Main {
                     if (Wahl instanceof Zutat) {        //das hier ist absurd. das muss anders gehen... instanceof erkennt den richtigen objekttyp aber die überladene methode nicht
                         if (pizza.addBelag((Zutat) Wahl) == 1) {
                             System.out.println("Ihre Pizza hat bereits 8 Zutaten. Falls noch nicht geschehen, wählen Sie eine Sauce und schliessen Sie die Pizza mit <fertig>.");
-                            continue;
                         }
                     }
                     else if (Wahl instanceof Sauce) {
                         if (pizza.addBelag((Sauce) Wahl) == 2) {
                             System.out.println("Ihre Pizza hat bereits eine Sauce. Wählen Sie noch bis zu 8 Zutaten und schliessen Sie die Pizza mit <fertig>.");
-                            continue;
                         }
                     }
                 }
