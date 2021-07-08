@@ -12,7 +12,7 @@ public class Main {
         Scanner in = new Scanner(System.in);
 
         System.out.println("**********Luigis-Pizza**********");
-        System.out.println("Herzlich willkommen bei Luigis Pizza!");
+        System.out.println("Herzlich willkommen bei Luigis Pizza! :) ");
         System.out.println();
         System.out.println("Bitte geben Sie ihren Namen ein um eine neue Bestellung zu erstellen.");
         System.out.println("**********Luigis-Pizza**********");
