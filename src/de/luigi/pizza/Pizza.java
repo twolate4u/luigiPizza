@@ -69,7 +69,7 @@ public class Pizza {
     public int getMaxSauce() {
         return maxSauce;
     }
-    public List<Zutat> getBelagList() {
+    public List<Zutat> getZutatList() {
         return zutatList;
     }
     public List<Sauce> getSauceList() {
