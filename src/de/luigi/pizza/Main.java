@@ -60,19 +60,20 @@ public class Main {
                     Belag Wahl = Auswahl.getBelag(command);
                     if (Wahl instanceof Zutat) {        //das hier ist absurd. das muss anders gehen... instanceof erkennt den richtigen objekttyp aber die überladene methode nicht
                         if (pizza.addBelag((Zutat) Wahl) == 1) {
-                            System.out.println("Ihre Pizza hat bereits 8 Zutaten. Falls noch nicht geschehen, wählen Sie eine Sauce und schliessen Sie die Pizza mit <fertig>.");
-                            continue;
+                            System.out.println("Ihre Pizza hat bereits 8 Zutaten. Falls noch nicht geschehen, wählen Sie " +
+                                    "eine Sauce und schliessen Sie die Pizza mit <fertig>.");
                         }
                     }
                     else if (Wahl instanceof Sauce) {
                         if (pizza.addBelag((Sauce) Wahl) == 2) {
-                            System.out.println("Ihre Pizza hat bereits eine Sauce. Wählen Sie noch bis zu 8 Zutaten und schliessen Sie die Pizza mit <fertig>.");
-                            continue;
+                            System.out.println("Ihre Pizza hat bereits eine Sauce. Wählen Sie noch bis zu 8 Zutaten " +
+                                    "und schliessen Sie die Pizza mit <fertig>.");
                         }
                     }
                 }
                 else {
-                    System.out.println("ungültiger Befehl. <Zutaten> für eine Liste der Zutaten. <Fertig> zum Schliessen der Pizza.");
+                    System.out.println("ungültiger Befehl. <Zutaten> für eine Liste der Zutaten. <Fertig> zum " +
+                            "Schliessen der Pizza.");
                 }
             }
             System.out.println("Möchten Sie eine weitere Pizza zu Ihrer Bestellung hinzufügen <Ja> <Nein>?");
