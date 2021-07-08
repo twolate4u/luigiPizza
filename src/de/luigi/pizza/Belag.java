@@ -8,6 +8,8 @@ public class Belag {
 //    constructor
 
 
+    public Belag() { }
+
     public Belag(double cost, String name, int id) {
         this.cost = cost;
         this.name = name;

@@ -57,6 +57,7 @@ public class Pizza {
 //    methods
 //    adds a Belag to the pizza.
 //    returns 0 if successful, 1 if the maximum off toppings is reached
+
     public int addBelag(Zutat zutat) {
         if (zutatList.size() >= maxZutat) {
             return 1;
@@ -66,10 +67,10 @@ public class Pizza {
     }
 
 //    adds a Sauce to the pizza.
-//    returns 0 if successful, 1 if there is already a sauce on the pizza.
-    public int addSauce(Sauce sauce) {
+//    returns 0 if successful, 2 if there is already a sauce on the pizza.
+    public int addBelag(Sauce sauce) {
         if (sauceList.size() >= maxSauce) {
-            return 1;
+            return 2;
         }
         sauceList.add(sauce);
         return 0;
