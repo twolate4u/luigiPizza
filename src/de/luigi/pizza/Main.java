@@ -36,7 +36,7 @@ public class Main {
         neuePizza:
         while (true) {  //schleife die ermöglicht mehr als eine pizza zu erstellen.
             Scanner in = new Scanner(System.in);
-            String command = "";
+            String command;
             Pizza pizza = new Pizza();
             order.getOrderList().add(pizza);
 
@@ -48,14 +48,14 @@ public class Main {
             zutatenWahl(pizza);
             System.out.println("Möchten Sie eine weitere Pizza zu Ihrer Bestellung hinzufügen <Ja> <Nein>?");
 
-            validation:
+            validationAddPizza:
             while (true) {
                 command = in.nextLine().trim().toLowerCase();
                 switch (command) {
                     case "nein":
                         break neuePizza; //beendet die äußerste Schleife
                     case "ja":
-                        break validation; //beendet innere Schleife und springt an den Anfang und erstellt neue Pizza.
+                        break validationAddPizza; //beendet innere Schleife und springt an den Anfang und erstellt neue Pizza.
                     default:
                         System.out.println("ungültiger Befehl. <ja> für eine weitere Pizza. <nein> zum Abschicken der Bestellung.");
                 }
