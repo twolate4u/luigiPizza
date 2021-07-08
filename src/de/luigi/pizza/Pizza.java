@@ -5,14 +5,36 @@ import java.util.List;
 
 public class Pizza {
 
-    private double cost;
-    private String name;
 //    maximale Anzahl von Zutaten pro Pizza.
     private int maxZutat = 8;
 //    maximale Anzahl von Saucen pro Pizza
     private int maxSauce = 1;
+    private double cost;
+    private String name;
     private List<Zutat> zutatList = new ArrayList<Zutat>();
     private List<Sauce> sauceList = new ArrayList<Sauce>();
+
+//    methods
+
+//    adds a Zutat to the pizza.
+//    returns true if successful, false if the maximum off toppings is reached
+    public boolean addZutat(Zutat zutat) {
+        if (zutatList.size() >= maxZutat) {
+            return false;
+        }
+        zutatList.add(zutat);
+        return true;
+    }
+
+//    adds a Sauce to the pizza.
+//    returns true if successful, false if there is already a sauce on the pizza.
+    public boolean addSauce(Sauce sauce) {
+        if (sauceList.size() >= maxSauce) {
+            return false;
+        }
+        sauceList.add(sauce);
+        return true;
+    }
 
 //    setter
     public void setCost(double cost) {
@@ -34,7 +56,7 @@ public class Pizza {
         this.sauceList = sauceList;
     }
 
-//    getter
+    //    getter
     public double getCost() {
         return cost;
     }
@@ -52,27 +74,5 @@ public class Pizza {
     }
     public List<Sauce> getSauceList() {
         return sauceList;
-    }
-
-//    methods
-//    adds a Belag to the pizza.
-//    returns 0 if successful, 1 if the maximum off toppings is reached
-
-    public int addBelag(Zutat zutat) {
-        if (zutatList.size() >= maxZutat) {
-            return 1;
-        }
-        zutatList.add(zutat);
-        return 0;
-    }
-
-//    adds a Sauce to the pizza.
-//    returns 0 if successful, 2 if there is already a sauce on the pizza.
-    public int addBelag(Sauce sauce) {
-        if (sauceList.size() >= maxSauce) {
-            return 2;
-        }
-        sauceList.add(sauce);
-        return 0;
     }
 }
