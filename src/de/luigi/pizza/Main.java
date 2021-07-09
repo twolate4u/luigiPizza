@@ -1,5 +1,6 @@
 package de.luigi.pizza;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
@@ -33,10 +34,9 @@ public class Main {
     private static void orderMenu(String orderName, Order order) {
 //        neue Pizza wird erstellt und der Bestellung hinzugefügt. So lange wir keine Änderungen zulassen reicht das so aus.
 //        sonst müssen wir auch die Möglichkeit einplanen eine bestehende Pizza zu laden.
-        neuePizza:
-        while (true) {  //schleife die ermöglicht mehr als eine pizza zu erstellen.
-            Scanner in = new Scanner(System.in);
-            String command;
+        Scanner in = new Scanner(System.in);
+        String command = "";
+        while (!command.equals("nein")) {  //schleife die ermöglicht mehr als eine pizza zu erstellen.
             Pizza pizza = new Pizza();
             order.getOrderList().add(pizza);
 
@@ -48,18 +48,16 @@ public class Main {
             zutatenWahl(pizza);
             System.out.println("Möchten Sie eine weitere Pizza zu Ihrer Bestellung hinzufügen <Ja> <Nein>?");
 
-            validationAddPizza:
-            while (true) {
+            do {
                 command = in.nextLine().trim().toLowerCase();
                 switch (command) {
                     case "nein":
-                        break neuePizza; //beendet die äußerste Schleife
                     case "ja":
-                        break validationAddPizza; //beendet innere Schleife und springt an den Anfang und erstellt neue Pizza.
+                        break; //innere Schleife wird gestoppt, äußere wenn command = "nein", bei "ja" wird sie erneut ausgeführt und erstellt eine neue Pizza.
                     default:
                         System.out.println("ungültiger Befehl. <ja> für eine weitere Pizza. <nein> zum Abschicken der Bestellung.");
                 }
-            }
+            } while (!(command.equals("nein") || command.equals("ja")));
         }
     }
 
@@ -70,7 +68,7 @@ public class Main {
         System.out.println("Bitte wählen Sie zunächst eine Sauce für diese Pizza aus.");
         System.out.println("Wählen Sie <keine> oder <0>, wenn Sie keine Sauce möchten.");
         Auswahl.printSaucenAuswahl();
-        while (true) {
+       do {
             command = in.nextLine().trim().toLowerCase();
             if (Auswahl.inSaucen(command)) {     //ist die Sauce vorhanden?
                 Sauce wahl = Auswahl.getSauce(command);
@@ -78,26 +76,24 @@ public class Main {
                 System.out.println(wahl.name + " zu Pizza hinzugefügt.");
                 break;
             }
-            else if (command.equals("keine") || command.equals("0")) {
-                break;
-            }
-            else {
+            else if (!(command.equals("keine") || command.equals("0"))) {
                 System.out.println("ungültiger Befehl. Bitte wählen Sie eine Sauce.");
             }
-        }
+        } while (!(command.equals("keine") || command.equals("0")));
     }
 
     private static void zutatenWahl(Pizza pizza) {
         Scanner in = new Scanner(System.in);
-        String command;
+        String command = "";
 
         System.out.println("Bitte wählen Sie nun bis zu acht Zutaten für diese Pizza aus.");
         System.out.println("Geben Sie <fertig> ein, wenn Sie mit Ihrer Pizza zufrieden sind.");
         System.out.println("Mit <Zutaten> können Sie die Liste der Zutaten erneut anzeigen.");
         Auswahl.printZutatenAuswahl();
-        while (true) {
+        while (!command.equals("fertig")) {
             command = in.nextLine().trim().toLowerCase();
-            if (Auswahl.inZutaten(command)) {     //ist die Sauce vorhanden?
+
+            if (Auswahl.inZutaten(command)) {     //ist der Befehl eine Zutat?
                 Zutat wahl = Auswahl.getZutat(command);
                 if (!pizza.addZutat(wahl)) {
                     System.out.println("Ihre Pizza hat bereits acht Zutaten. Bitte schliessen Sie diese Pizza mit <fertig> ab.");
@@ -106,12 +102,19 @@ public class Main {
                     System.out.println(wahl.name + " zu Pizza hinzugefügt.");
                 }
             }
-            else if (command.equals("fertig")){
-                break;
-            }
             else {
-                System.out.println("ungültiger Befehl. Bitte wählen Sie eine Zutat oder <fertig>.");
+                switch (command) {
+                    case "fertig":
+                        break;
+                    case "zutaten":
+                        Auswahl.printZutatenAuswahl();
+                        break;
+                    default:
+                        System.out.println("ungültiger Befehl. Bitte wählen Sie eine Zutat oder <fertig>.");
+                        break;
+                    }
+                }
             }
         }
-    }
+
 }
