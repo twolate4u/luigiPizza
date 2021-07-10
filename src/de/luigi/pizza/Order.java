@@ -35,9 +35,11 @@ public class Order {
         return orderList.get(pizza);
     }
 
+
 //    get total cost of order
     public double getTotalCost() {
         double totalCost = 0;
+
         for (Pizza pizza : orderList) {
             totalCost += pizza.getCost();
         }

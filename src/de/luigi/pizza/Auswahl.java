@@ -14,6 +14,7 @@ public class Auswahl {
             new Sauce(0.00, "BBQ-Sauce", 02)
     };
 
+
     public static void printZutatenAuswahl() {
         String space = " ";
         System.out.println("Mögliche Zutaten:");

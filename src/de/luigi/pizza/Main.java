@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) { //entry point
         welcomeMenu();
     }
 
@@ -16,6 +16,8 @@ public class Main {
         System.out.println();
         System.out.println("Bitte geben Sie ihren Namen ein um eine neue Bestellung zu erstellen.");
         System.out.println("**********Luigis-Pizza**********");
+
+
 
         String orderName;
         orderName = in.nextLine().trim();
@@ -41,8 +43,10 @@ public class Main {
             order.getOrderList().add(pizza);
 
             System.out.println();
-            System.out.println("Bestellung: " + orderName);
-            System.out.println("Pizza No.: " + (order.getOrderList().indexOf(pizza)+1)); // +1 weil sonst die erste Pizza 0 ist.
+            System.out.println("Bestellung für " + orderName + " wurde erstellt.");
+
+            System.out.println("Pizza No.: " + (order.getOrderList().indexOf(pizza)+1) + " mit einem Basispreis von 4,99 Euro."); // +1 weil sonst die erste Pizza 0 ist.
+
             saucenWahl(pizza);
             System.out.println();
             zutatenWahl(pizza);
@@ -63,6 +67,7 @@ public class Main {
         }
     }
 
+
     private static void saucenWahl(Pizza pizza) {
         Scanner in = new Scanner(System.in);
         String command;
@@ -76,9 +81,12 @@ public class Main {
                 Sauce wahl = Auswahl.getSauce(command);
                 pizza.addSauce(wahl);
                 System.out.println(wahl.name + " zu Pizza hinzugefügt.");
+                System.out.println("Die Basispizza mit " + wahl.name + " kostet: " + (4.99 + wahl.getCost()) +" Euro" );
                 break;
             }
             else if (command.equals("keine") || command.equals("0")) {
+                System.out.println();
+                System.out.println("Sie haben keine Sauce gewählt.");
                 break;
             }
             else {
@@ -94,10 +102,11 @@ public class Main {
         System.out.println("Bitte wählen Sie nun bis zu acht Zutaten für diese Pizza aus.");
         System.out.println("Geben Sie <fertig> ein, wenn Sie mit Ihrer Pizza zufrieden sind.");
         System.out.println("Mit <Zutaten> können Sie die Liste der Zutaten erneut anzeigen.");
+
         Auswahl.printZutatenAuswahl();
         while (true) {
             command = in.nextLine().trim().toLowerCase();
-            if (Auswahl.inZutaten(command)) {     //ist die Sauce vorhanden?
+            if (Auswahl.inZutaten(command)) {     //ist die Zutat vorhanden?
                 Zutat wahl = Auswahl.getZutat(command);
                 if (!pizza.addZutat(wahl)) {
                     System.out.println("Ihre Pizza hat bereits acht Zutaten. Bitte schliessen Sie diese Pizza mit <fertig> ab.");
@@ -107,11 +116,14 @@ public class Main {
                 }
             }
             else if (command.equals("fertig")){
+                System.out.println();
                 break;
             }
             else {
                 System.out.println("ungültiger Befehl. Bitte wählen Sie eine Zutat oder <fertig>.");
             }
+
         }
+
     }
 }
