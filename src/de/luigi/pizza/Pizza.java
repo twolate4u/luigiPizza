@@ -14,7 +14,10 @@ public class Pizza {
     private List<Zutat> zutatList = new ArrayList<Zutat>();
     private List<Sauce> sauceList = new ArrayList<Sauce>();
 
+
+
 //    methods
+
 
 //    adds a Zutat to the pizza.
 //    returns true if successful, false if the maximum off toppings is reached
@@ -26,6 +29,8 @@ public class Pizza {
         return true;
     }
 
+
+
 //    adds a Sauce to the pizza.
 //    returns true if successful, false if there is already a sauce on the pizza.
     public boolean addSauce(Sauce sauce) {
@@ -36,7 +41,8 @@ public class Pizza {
         return true;
     }
 
-//    setter
+
+    //    setter
     public void setCost(double cost) {
         this.cost = cost;
     }
