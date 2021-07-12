@@ -1,6 +1,5 @@
 package de.luigi.pizza;
 
-import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
@@ -10,8 +9,8 @@ public class Main {
     }
 
     static void welcomeMenu() {
-        Scanner in = new Scanner(System.in);
 
+        Scanner in = new Scanner(System.in);
         System.out.println("**********Luigis-Pizza**********");
         System.out.println("Herzlich willkommen bei Luigis Pizza! :) ");
         System.out.println();
@@ -28,10 +27,10 @@ public class Main {
 //        System.out.println("Bitte wähle aus"); //Was soll bestellt werden?
 
         Order order = new Order(orderName);
-        orderMenu(orderName, order);
+        orderMenu(order);
     }
 
-    private static void orderMenu(String orderName, Order order) {
+    private static void orderMenu(Order order) {
 //        neue Pizza wird erstellt und der Bestellung hinzugefügt. So lange wir keine Änderungen zulassen reicht das so aus.
 //        sonst müssen wir auch die Möglichkeit einplanen eine bestehende Pizza zu laden.
         Scanner in = new Scanner(System.in);
@@ -41,7 +40,7 @@ public class Main {
             order.getOrderList().add(pizza);
 
             System.out.println();
-            System.out.println("Bestellung: " + orderName);
+            System.out.println("Bestellung: " + order.getOrderName());
             System.out.println("Pizza No.: " + (order.getOrderList().indexOf(pizza)+1)); // +1 weil sonst die erste Pizza 0 ist.
             saucenWahl(pizza);
             System.out.println();
@@ -59,6 +58,7 @@ public class Main {
                 }
             } while (!(command.equals("nein") || command.equals("ja")));
         }
+        farewellMenu(order);
     }
 
     private static void saucenWahl(Pizza pizza) {
@@ -116,5 +116,38 @@ public class Main {
                 }
             }
         }
+
+    private static void farewellMenu(Order order) { // funktioniert so weit, aber es fehlt noch alles was mit dem Preis zu tun hat. Zu dem weiß ich keine Lösung für das Löschen der Konsole.
+        Scanner in = new Scanner(System.in);
+        String command = "";
+
+        System.out.println();
+        System.out.println("Vielen Dank für ihre Bestellung " + order.getOrderName() + "!");
+        if (order.getOrderList().size() > 1) {
+            System.out.println("Sie haben folgende Pizzen bestellt: ");
+        }
+        else {
+            System.out.println("Sie haben folgende Pizza bestellt: ");
+        }
+        for (Pizza pizza: order.getOrderList()) {
+            System.out.println("Pizza No.: " + (order.getOrderList().indexOf(pizza)+1)); // +1 weil sonst die erste Pizza 0 ist.
+            for (Sauce sauce: pizza.getSauceList()) {
+                System.out.print(sauce.getName() + ", ");
+            }
+            for (Zutat zutat: pizza.getZutatList()) {
+                if (pizza.getZutatList().indexOf(zutat) == pizza.getZutatList().size()-1) { //letzte Zutat braucht kein Komma mehr. Zu dem ist hier ein Zeilenumbruch nötig.
+                    System.out.println(zutat.getName() + ".");
+                }
+                else {
+                    System.out.print(zutat.getName() + ", ");
+                }
+            }
+        }
+        System.out.println();
+        System.out.println("Bitte drücken Sie <Enter> um die Bestellung zu schließen.");
+        in.nextLine();
+        order.clearOrder();
+        welcomeMenu();
+    }
 
 }
