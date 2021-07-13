@@ -1,6 +1,6 @@
 package de.luigi.pizza;
 
-public class Belag {
+public abstract class Belag {
     protected double cost;
     protected String name;
     protected int id;

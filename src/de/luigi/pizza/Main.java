@@ -5,11 +5,6 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        welcomeMenu();
-    }
-
-    static void welcomeMenu() { //eigentlich könnte das hier auch in die main.
-
         Scanner in = new Scanner(System.in);
         System.out.println("**********Luigis-Pizza**********");
         System.out.println("Herzlich willkommen bei Luigis Pizza! :) ");
@@ -19,6 +14,12 @@ public class Main {
 
         String orderName;
         orderName = in.nextLine().trim();
+
+        while (orderName.equals("")) {
+            System.out.println("Bitte geben Sie ihren Namen ein um eine Bestellung zu erstellen: ");
+            orderName = in.nextLine().trim();
+        }
+
         while (orderName.length() > 31) {
             System.out.println("Der Name ist zu lang. Bitte versuchen Sie es mit einem kürzeren Namen: ");
             orderName = in.nextLine().trim();
@@ -146,6 +147,6 @@ public class Main {
         System.out.println("Bitte drücken Sie <Enter> um die Bestellung zu schließen.");
         in.nextLine();
         order.clearOrder();
-        welcomeMenu();
+        main(new String[] {});
     }
 }
