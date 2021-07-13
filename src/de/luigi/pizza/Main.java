@@ -8,7 +8,7 @@ public class Main {
         welcomeMenu();
     }
 
-    static void welcomeMenu() {
+    static void welcomeMenu() { //eigentlich könnte das hier auch in die main.
 
         Scanner in = new Scanner(System.in);
         System.out.println("**********Luigis-Pizza**********");

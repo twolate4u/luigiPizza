@@ -12,6 +12,20 @@ public class Order {
         this.orderName = orderName;
     }
 
+//    get total cost of order
+    public double getTotalCost() {
+        double totalCost = 0;
+
+        for (Pizza pizza : orderList) {
+            totalCost += pizza.getCost();
+        }
+        return totalCost;
+    }
+
+    public void clearOrder() {
+        orderList.clear();
+    }
+
 //    setter
     public void setOrderName(String orderName) {
         this.orderName = orderName;
@@ -29,28 +43,5 @@ public class Order {
     public List<Pizza> getOrderList() {
         return orderList;
     }
-
-//    get specific pizza via index
-    public Pizza getPizza(int pizza) {
-        return orderList.get(pizza);
-    }
-
-
-//    get total cost of order
-    public double getTotalCost() {
-        double totalCost = 0;
-
-        for (Pizza pizza : orderList) {
-            totalCost += pizza.getCost();
-        }
-        return totalCost;
-    }
-
-    public void addPizza(Pizza pizza) {
-        orderList.add(pizza);
-    }
-
-    public void clearOrder() {
-        orderList.clear();
-    }
 }
+
