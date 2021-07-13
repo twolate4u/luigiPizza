@@ -9,7 +9,7 @@ public class Pizza {
     private int maxZutat = 8;
 //    maximale Anzahl von Saucen pro Pizza
     private int maxSauce = 1;
-    private double cost;
+    private double cost = 4.99;
     private String name;
     private List<Zutat> zutatList = new ArrayList<Zutat>();
     private List<Sauce> sauceList = new ArrayList<Sauce>();
@@ -18,7 +18,6 @@ public class Pizza {
 
 //    methods
 
-
 //    adds a Zutat to the pizza.
 //    returns true if successful, false if the maximum off toppings is reached
     public boolean addZutat(Zutat zutat) {
@@ -26,6 +25,7 @@ public class Pizza {
             return false;
         }
         zutatList.add(zutat);
+        cost += zutat.cost;
         return true;
     }
 

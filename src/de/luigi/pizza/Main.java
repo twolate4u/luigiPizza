@@ -136,7 +136,7 @@ public class Main {
             }
             for (Zutat zutat: pizza.getZutatList()) {
                 if (pizza.getZutatList().indexOf(zutat) == pizza.getZutatList().size()-1) { //letzte Zutat braucht kein Komma mehr. Zu dem ist hier ein Zeilenumbruch nötig.
-                    System.out.println(zutat.getName() + ".");
+                    System.out.println(zutat.getName() + ". Diese Pizza kostet: " + pizza.getCost() + "€");
                 }
                 else {
                     System.out.print(zutat.getName() + ", ");
@@ -144,6 +144,7 @@ public class Main {
             }
         }
         System.out.println();
+        System.out.println("Die Bestellung kostet: " + order.getTotalCost() + "€");
         System.out.println("Bitte drücken Sie <Enter> um die Bestellung zu schließen.");
         in.nextLine();
         order.clearOrder();
