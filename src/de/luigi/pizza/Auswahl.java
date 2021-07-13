@@ -31,12 +31,6 @@ public abstract class Auswahl {
         int longestZutat = 0;
         int spaltenLaenge;
 
-        for (Zutat zutat: zutaten) {
-            if (zutat.name.length() > longestZutat) {
-                longestZutat = zutat.name.length();
-            }
-        }
-
         //unterschiedliche Werte für gerade und ungerade Zutatenmengen nötig.
         if (zutaten.length%2 == 0) {
             spaltenLaenge = zutaten.length / 2 - 1;
@@ -44,8 +38,14 @@ public abstract class Auswahl {
         else {
             spaltenLaenge = zutaten.length / 2;
         }
-        System.out.println("Mögliche Zutaten:");
 
+        for (int i = 0; (i <= spaltenLaenge); i++) { //längster Zutatenname in der ersten Spalte um die Ausrichtung zu berechnen.
+            if (zutaten[i].name.length() > longestZutat) {
+                longestZutat = zutaten[i].name.length();
+            }
+        }
+
+        System.out.println("Mögliche Zutaten:");
         for (int i = 0; (i <= spaltenLaenge); i++) {
             System.out.print(zutaten[i].id + space + zutaten[i].name + space + zutaten[i].cost + "€");
 
@@ -53,7 +53,6 @@ public abstract class Auswahl {
                 for (int j = 0; j <= longestZutat - zutaten[i].name.length() + 2; j++) { //fügt soviele Leerzeichen ein, damit die zweite Spalte linksbündig ist.
                     System.out.print(space);
                 }
-
                 System.out.println(zutaten[i + (spaltenLaenge + 1)].id + space + zutaten[i + (spaltenLaenge + 1)].name +
                         space + zutaten[i + (spaltenLaenge + 1)].cost + "€");
             }
