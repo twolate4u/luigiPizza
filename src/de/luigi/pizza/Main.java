@@ -24,8 +24,6 @@ public class Main {
             orderName = in.nextLine().trim();
         }
 
-//        System.out.println("Bitte wähle aus"); //Was soll bestellt werden?
-
         Order order = new Order(orderName);
         orderMenu(order);
     }
@@ -135,7 +133,7 @@ public class Main {
                 System.out.print(sauce.getName() + ", ");
             }
             for (Zutat zutat: pizza.getZutatList()) {
-                if (pizza.getZutatList().indexOf(zutat) == pizza.getZutatList().size()-1) { //letzte Zutat braucht kein Komma mehr. Zu dem ist hier ein Zeilenumbruch nötig.
+                if (pizza.getZutatList().indexOf(zutat) == pizza.getZutatList().size()-1) { //letzte Zutat braucht kein Komma mehr. Zu dem ist hier ein Zeilenumbruch nötig + Kosten.
                     System.out.println(zutat.getName() + ". Diese Pizza kostet: " + pizza.getCost() + "€");
                 }
                 else {
@@ -150,5 +148,4 @@ public class Main {
         order.clearOrder();
         welcomeMenu();
     }
-
 }
