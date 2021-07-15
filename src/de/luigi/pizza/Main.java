@@ -53,7 +53,8 @@ public class Main {
                     case "ja":
                         break; //innere Schleife wird gestoppt, äußere wenn command = "nein", bei "ja" wird sie erneut ausgeführt und erstellt eine neue Pizza.
                     default:
-                        System.out.println("ungültiger Befehl. <ja> für eine weitere Pizza. <nein> zum Abschicken der Bestellung.");
+                        System.out.println("ungültiger Befehl. <ja> für eine weitere Pizza. <nein> zum Abschicken " +
+                                "der Bestellung.");
                 }
             } while (!(command.equals("nein") || command.equals("ja")));
         }
@@ -116,7 +117,7 @@ public class Main {
             }
         }
 
-    private static void farewellMenu(Order order) { // funktioniert so weit, aber es fehlt noch alles was mit dem Preis zu tun hat. Zu dem weiß ich keine Lösung für das Löschen der Konsole.
+    private static void farewellMenu(Order order) {
         Scanner in = new Scanner(System.in);
         String command = "";
 
@@ -136,7 +137,8 @@ public class Main {
             int i = 0;
             for (Zutat zutat: pizza.getZutatList()) {
                 if (++i == pizza.getZutatList().size()) { //letzte Zutat braucht kein Komma mehr. Zu dem ist hier ein Zeilenumbruch nötig + Kosten.
-                    System.out.println(zutat.getName() + ". Diese Pizza kostet: " + String.format("%.2f", pizza.getCost()) + "€");
+                    System.out.println(zutat.getName() + ". Diese Pizza kostet: " + String.format("%.2f",
+                            pizza.getCost()) + "€");
                 }
                 else {
                     System.out.print(zutat.getName() + ", ");
