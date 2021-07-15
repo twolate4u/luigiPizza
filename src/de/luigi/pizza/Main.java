@@ -119,7 +119,6 @@ public class Main {
 
     private static void farewellMenu(Order order) {
         Scanner in = new Scanner(System.in);
-        String command = "";
 
         System.out.println();
         System.out.println("Vielen Dank für ihre Bestellung " + order.getOrderName() + "!");
